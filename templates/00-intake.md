@@ -30,7 +30,7 @@
 ## Scope Snapshot
 
 ```mermaid
-flowchart LR
+flowchart TD
 Goal[Goal] --> Scope[In Scope]
 Goal --> OutScope[Out of Scope]
 Scope --> Path[Priority Path]

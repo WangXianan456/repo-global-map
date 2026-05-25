@@ -1,60 +1,130 @@
 ﻿# 02 System Diagrams
 
+## Diagram Readability Budget
+
+| Rule | Target | Result |
+|---|---|---|
+| Obsidian width | No horizontal scrolling in a narrow note pane | |
+| Nodes per diagram | 5-9 preferred, 12 max | |
+| Edges per diagram | `edges <= nodes + 3` | |
+| Label length | Short node names; file paths stay in evidence tables | |
+| Split trigger | If dependencies exceed 5, split into upstream/core/downstream | |
+
 ## A. Context Diagram
 
 ```mermaid
-flowchart LR
-Caller[Caller: UNKNOWN] --> Ingress[Ingress: UNKNOWN]
-Ingress --> App[App Core: UNKNOWN]
-App --> DB[(DB: UNKNOWN)]
-App --> Cache[(Cache: UNKNOWN)]
-App --> MQ[[MQ: UNKNOWN]]
-App --> Ext[External Service: UNKNOWN]
+flowchart TD
+Caller[Caller] --> Ingress[Ingress]
+Ingress --> App[App Core]
+App --> Data[Data Boundary]
+App --> Outbound[Outbound Boundary]
 ```
 
 Evidence:
 
-## B. Container/Module Diagram
+| Node | Real file/symbol | Evidence | Confidence |
+|---|---|---|---|
+| Caller | UNKNOWN | UNKNOWN | LOW |
+| Ingress | UNKNOWN | UNKNOWN | LOW |
+| App Core | UNKNOWN | UNKNOWN | LOW |
+| Data Boundary | DB/cache/MQ summary, expand below if needed | UNKNOWN | LOW |
+| Outbound Boundary | External services summary, expand below if needed | UNKNOWN | LOW |
+
+Why not expanded further:
+
+## B. Data and External Boundary Diagram
+
+Use this only when the context diagram would otherwise have more than 5 dependencies.
 
 ```mermaid
 flowchart TD
-E1[Entry Module: UNKNOWN] --> M1[Domain Module: UNKNOWN]
-M1 --> M2[Application Service: UNKNOWN]
-M2 --> M3[Repository Layer: UNKNOWN]
-M3 --> D1[(Data Store: UNKNOWN)]
-M2 --> X1[External Adapter: UNKNOWN]
+App[App Core] --> DB[(DB)]
+App --> Cache[(Cache)]
+App --> MQ[[MQ]]
+App --> Ext[External API]
 ```
 
 Evidence:
 
-## C. Core Sequence Diagram
+| Node | Real dependency/config | Evidence | Confidence |
+|---|---|---|---|
+| DB | UNKNOWN | UNKNOWN | LOW |
+| Cache | UNKNOWN | UNKNOWN | LOW |
+| MQ | UNKNOWN | UNKNOWN | LOW |
+| External API | UNKNOWN | UNKNOWN | LOW |
+
+## C. Container/Module Diagram
+
+```mermaid
+flowchart TD
+Entry[Entry Module] --> Service[Application Service]
+Service --> Domain[Domain Module]
+Service --> Repo[Repository Layer]
+Repo --> Store[(Data Store)]
+Service --> Adapter[External Adapter]
+```
+
+Evidence:
+
+| Node | Real file/symbol | Evidence | Confidence |
+|---|---|---|---|
+| Entry Module | UNKNOWN | UNKNOWN | LOW |
+| Application Service | UNKNOWN | UNKNOWN | LOW |
+| Domain Module | UNKNOWN | UNKNOWN | LOW |
+| Repository Layer | UNKNOWN | UNKNOWN | LOW |
+| Data Store | UNKNOWN | UNKNOWN | LOW |
+| External Adapter | UNKNOWN | UNKNOWN | LOW |
+
+Why not expanded further:
+
+## D. Core Sequence Diagram
 
 ```mermaid
 sequenceDiagram
-participant U as User/Caller
-participant G as Gateway/Controller
+participant U as Caller
+participant G as Controller
 participant S as Service
 participant R as Repository
 participant D as DB
-participant X as External API
 U->>G: request
-G->>S: validate + invoke
+G->>S: validate
 S->>R: read/write
-R->>D: query/commit
-S->>X: outbound call
+R->>D: query
 S-->>G: response
 G-->>U: result
 ```
 
 Evidence:
 
-## D. Risk Hotspots Graph (Optional for Lite, required for Standard+)
+Optional outbound call, if present:
 
 ```mermaid
-graph TD
-H1[Hotspot: UNKNOWN] --- R1[Risk: Test Gap]
-H2[Hotspot: UNKNOWN] --- R2[Risk: Tight Coupling]
-H3[Hotspot: UNKNOWN] --- R3[Risk: Single Owner]
+sequenceDiagram
+participant S as Service
+participant A as Adapter
+participant X as External API
+S->>A: build request
+A->>X: call
+X-->>A: result
+A-->>S: normalized result
 ```
 
 Evidence:
+
+## E. Risk Hotspots Matrix
+
+Prefer this matrix over a dense risk graph. Add a small graph only for the top 1-2 risks when the relationship itself matters.
+
+| Hotspot | Risk | Trigger | Signal | First action | Evidence |
+|---|---|---|---|---|---|
+| UNKNOWN | Test gap | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| UNKNOWN | Tight coupling | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| UNKNOWN | Single owner | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+
+Optional small risk graph:
+
+```mermaid
+flowchart TD
+Hotspot[Top Hotspot] --> Risk[Primary Risk]
+Risk --> Action[First Action]
+```

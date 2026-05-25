@@ -26,10 +26,10 @@
 ## Command Flow
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Scan Files] --> B[Locate Entry]
 B --> C[Trace Data Path]
 C --> D[Find External Dependencies]
-D --> E[Collect Tests + CI]
-E --> F[Write Fact Sheet + Diagrams]
+D --> E[Collect Tests]
+E --> F[Write Outputs]
 ```
