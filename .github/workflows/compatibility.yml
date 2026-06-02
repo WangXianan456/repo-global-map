@@ -15,6 +15,7 @@ jobs:
       - name: Check skill contract
         run: |
           test -f SKILL.md
+          test "$(xxd -p -l 3 SKILL.md)" != "efbbbf"
           grep -q '^name: repo-global-map$' SKILL.md
           test -d templates
           test -f scripts/init-repo-map.sh
