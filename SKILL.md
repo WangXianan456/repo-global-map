@@ -101,6 +101,14 @@ Get-ChildItem -Force
 rg -n "main\(|createApp|FastAPI|SpringApplication|router|Blueprint|express\(|gin.Default\(" -S .
 ```
 
+macOS / Linux 等价命令：
+
+```bash
+rg --files
+find . -maxdepth 2 -print
+rg -n "main\(|createApp|FastAPI|SpringApplication|router|Blueprint|express\(|gin.Default\(" -S .
+```
+
 快速锁定：
 
 - 入口与启动：`main*`, `app*`, `server*`, `cmd/`

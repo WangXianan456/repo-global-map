@@ -36,6 +36,36 @@
 
 ## 快速开始
 
+### macOS / Linux
+
+1. 注册到 Codex skills 目录：
+
+```bash
+mkdir -p ~/.codex/skills
+git clone <your-skill-repo-url> ~/.codex/skills/repo-global-map
+```
+
+如果已经 clone 到本地，也可以用软链接方便开发：
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s "$(pwd)" ~/.codex/skills/repo-global-map
+```
+
+2. 在目标代码仓库中初始化分析工作区：
+
+```bash
+bash ~/.codex/skills/repo-global-map/scripts/init-repo-map.sh
+```
+
+3. 指定目录与标签（可选）：
+
+```bash
+bash ~/.codex/skills/repo-global-map/scripts/init-repo-map.sh --output-root artifacts/repo-map --tag demo-01
+```
+
+### Windows PowerShell
+
 1. 初始化分析工作区：
 
 ```powershell
@@ -49,6 +79,15 @@
 ```
 
 3. 按 `SKILL.md` 的 Step 0-6 填写模板并迭代（Step 6 为最终输出前必做）。
+
+## 跨平台兼容约束
+
+- skill 根目录必须包含 `SKILL.md`，注册目录名建议固定为 `repo-global-map`。
+- 不要在 `SKILL.md` 或模板中写入个人机器的绝对路径，例如 `F:\...` 或 `/Users/<name>/...`。
+- macOS/Linux 使用 `scripts/init-repo-map.sh`；Windows 使用 `scripts/init-repo-map.ps1`。
+- Markdown 模板使用 UTF-8 编码；中文报告内容、Mermaid、表格在 macOS 和 Windows 上都应可直接读取。
+- 命令示例优先给跨平台命令；Windows 专属命令需要提供 macOS/Linux 替代命令。
+- GitHub Actions 中的 `compatibility` 工作流会在 `macos-latest` 上模拟注册到 `~/.codex/skills/repo-global-map`，并运行初始化脚本做 smoke test。
 
 ## 升级点（相对基础版）
 

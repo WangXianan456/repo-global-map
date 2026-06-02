@@ -1,0 +1,36 @@
+name: compatibility
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  macos-skill-smoke:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check skill contract
+        run: |
+          test -f SKILL.md
+          grep -q '^name: repo-global-map$' SKILL.md
+          test -d templates
+          test -f scripts/init-repo-map.sh
+
+      - name: Simulate Codex skill registration
+        run: |
+          mkdir -p "$HOME/.codex/skills"
+          ln -s "$GITHUB_WORKSPACE" "$HOME/.codex/skills/repo-global-map"
+          test -f "$HOME/.codex/skills/repo-global-map/SKILL.md"
+          test -f "$HOME/.codex/skills/repo-global-map/templates/00-intake.md"
+
+      - name: Initialize repo map workspace
+        run: |
+          mkdir -p /tmp/repo-global-map-target
+          cd /tmp/repo-global-map-target
+          bash "$HOME/.codex/skills/repo-global-map/scripts/init-repo-map.sh" --output-root artifacts/repo-map --tag ci-smoke
+          test -f artifacts/repo-map/ci-smoke/00-intake.md
+          test -f artifacts/repo-map/ci-smoke/12-reasoning-iteration.md
+          grep -q "任务边界" artifacts/repo-map/ci-smoke/00-intake.md
