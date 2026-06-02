@@ -1,40 +1,41 @@
-﻿# 12 Reasoning Iteration (Final Output Gate)
+﻿# 12 推理摘要迭代（最终输出闸门）
 
-## Goal
+## 目标
 
-Improve final output quality through explicit, evidence-bound reasoning iteration.
+通过显式、证据绑定的推理迭代提升最终输出质量。
 
-## A. Key Assumptions (3-7)
+## A. 关键假设（3-7 条）
 
-| ID | Assumption | Why it matters |
+| ID | 假设 | 为什么重要 |
 |---|---|---|
 | A1 | | |
 
-## B. Evidence Binding
+## B. 证据绑定
 
-| Assumption ID | Evidence (file/symbol) | Confidence | Gap |
+| 假设 ID | 证据（文件/符号） | 置信度 | 缺口 |
 |---|---|---|---|
 | A1 | | HIGH/MEDIUM/LOW | |
 
-## C. Counterexample Check
+## C. 反例检查
 
-| Assumption ID | What would falsify it | Detection signal |
+| 假设 ID | 什么会推翻它 | 检测信号 |
 |---|---|---|
 | A1 | | |
 
-## D. Revision Log
+## D. 修正记录
 
-| Item | Before | After | Reason |
+| 项目 | 修正前 | 修正后 | 原因 |
 |---|---|---|---|
-| Conclusion 1 | | | |
+| 结论 1 | | | |
 
-## E. Final Reasoning Summary (for user-visible output)
+## E. 最终推理摘要（用于用户可见输出）
 
-- Confirmed conclusions:
-- Revised conclusions:
-- Remaining unknowns:
-- Minimum next validation actions:
+- 已确认结论：
+- 已修正结论：
+- 剩余未知项：
+- 最小下一步验证动作：
 
-## Rule
+## 规则
 
-Do not output long internal chain-of-thought. Output concise reasoning summary + evidence-backed conclusions.
+不要输出冗长内部思考过程。只输出简洁推理摘要与有证据支撑的结论。
+

@@ -1,48 +1,49 @@
-﻿# 09 Quality Scorecard
+﻿# 09 质量评分卡
 
-## Score Grid
+## 评分表
 
-| Dimension | Score (0-5) | Evidence |
+| 维度 | 分数（0-5） | 证据 |
 |---|---|---|
-| Global clarity | | |
-| Executable path clarity | | |
-| Risk actionability | | |
-| Evidence completeness | | |
-| Onboarding friendliness | | |
-| Chart/Table ratio quality | | |
-| Obsidian diagram readability | | |
+| 全局清晰度 | | |
+| 链路可执行性 | | |
+| 风险可操作性 | | |
+| 证据完整性 | | |
+| 上手友好度 | | |
+| 图表/表格占比质量 | | |
+| Obsidian 图表可读性 | | |
 
-## Thresholds
+## 阈值
 
-| Rule | Result |
+| 规则 | 结果 |
 |---|---|
-| Total score | |
-| Pass condition | `>= 18` |
-| If fail | Mandatory one iteration |
-| Chart/Table target | `>= 70%` |
-| Diagram readability gate | No diagram should require horizontal scrolling or have dense crossing lines |
+| 总分 | |
+| 通过条件 | `>= 18` |
+| 未通过时 | 必须迭代一次 |
+| 图表/表格目标 | `>= 70%` |
+| 图表可读性闸门 | 不应出现需要横向滚动或交叉线密集的图 |
 
-## Iteration Delta
+## 迭代差异
 
-| Gap | Fix Action | Updated Artifact |
+| 缺口 | 修复动作 | 更新产物 |
 |---|---|---|
 | | | |
 
-## Diagram Review
+## 图表复核
 
-| Diagram | Nodes | Edges | Width OK (`Y/N`) | Crossing/Density OK (`Y/N`) | Action |
+| 图 | 节点数 | 边数 | 宽度通过（`Y/N`） | 交叉/密度通过（`Y/N`） | 动作 |
 |---|---:|---:|---|---|---|
-| Context | | | | | |
-| Module | | | | | |
-| Sequence | | | | | |
-| Risk | | | | | |
+| 上下文 | | | | | |
+| 模块 | | | | | |
+| 时序 | | | | | |
+| 风险 | | | | | |
 
-## Final Check
+## 最终检查
 
 ```mermaid
 flowchart TD
-Score[Compute Score] --> Pass{>= 18?}
-Pass -->|Yes| Done[Finalize]
-Pass -->|No| Iterate[Patch Evidence + Diagram]
+Score[计算分数] --> Pass{>= 18?}
+Pass -->|是| Done[完成交付]
+Pass -->|否| Iterate[补证据与图表]
 Iterate --> Score
 ```
+

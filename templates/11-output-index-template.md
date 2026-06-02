@@ -1,17 +1,17 @@
-﻿# 11 Output Index Template
+﻿# 11 输出索引模板
 
-## Header
+## 头信息
 
-| Field | Value |
+| 字段 | 值 |
 |---|---|
-| Repository | |
-| Analysis date | |
-| Mode | |
-| Analyst | |
+| 仓库 | |
+| 分析日期 | |
+| 模式 | |
+| 分析者 | |
 
-## Artifact Index
+## 产物索引
 
-| # | Artifact | Status (`Done/WIP/NA`) |
+| # | 产物 | 状态（`Done/WIP/NA`） |
 |---|---|---|
 | 1 | `00-intake.md` | |
 | 2 | `01-fact-sheet.md` | |
@@ -26,22 +26,23 @@
 | 11 | `10-command-cookbook.md` | |
 | 12 | `12-reasoning-iteration.md` | |
 
-## Executive Snapshot
+## 执行摘要
 
-| Item | Content |
+| 项目 | 内容 |
 |---|---|
-| System in one sentence | |
-| Current top risk | |
-| Safest first change | |
-| Next verification action | |
+| 一句话系统说明 | |
+| 当前首要风险 | |
+| 最安全的首个改动 | |
+| 下一步验证动作 | |
 
-## Delivery Map
+## 交付地图
 
 ```mermaid
 flowchart TD
-I[Index] --> F[Fact Sheet]
-I --> D[Diagrams]
-I --> R[Risk Register]
-I --> C[Change Guide]
-I --> Q[Quality + Reasoning Gate]
+I[索引] --> F[事实页]
+I --> D[图集]
+I --> R[风险登记]
+I --> C[变更指南]
+I --> Q[质量与推理闸门]
 ```
+

@@ -1,4 +1,4 @@
-﻿# Quick Checklist (15-30 min)
+﻿# 快速检查清单（15-30 分钟）
 
 ## A. 基本事实
 
@@ -25,3 +25,4 @@
 - [ ] UNKNOWN_1:
 - [ ] UNKNOWN_2:
 - [ ] UNKNOWN_3:
+

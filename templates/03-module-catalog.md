@@ -1,16 +1,17 @@
-﻿# 03 Module Catalog (Standard+)
+﻿# 03 模块目录（Standard+）
 
-| Module | Responsibility | Key Files | Upstream | Downstream | Owner (if known) | Coupling Risk |
+| 模块 | 职责 | 关键文件 | 上游 | 下游 | 负责人（如已知） | 耦合风险 |
 |---|---|---|---|---|---|---|
 | | | | | | | HIGH/MEDIUM/LOW |
 
-## Notes
+## 备注
 
-- Entry modules:
-- Core domain modules:
-- Infra adapters:
+- 入口模块：
+- 核心领域模块：
+- 基础设施适配器：
 
-## Evidence
+## 证据
 
-- Module boundaries evidence:
-- Dependency direction evidence:
+- 模块边界证据：
+- 依赖方向证据：
+

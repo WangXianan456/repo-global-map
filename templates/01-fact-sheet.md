@@ -1,35 +1,36 @@
-﻿# 01 Fact Sheet
+﻿# 01 关键事实页
 
-## System Snapshot
+## 系统快照
 
-- Project name:
-- Business objective:
-- Primary users/callers:
-- Main runtime(s):
-- Language/framework:
+- 项目名称：
+- 业务目标：
+- 主要用户/调用方：
+- 主要运行时：
+- 语言/框架：
 
-## Run and Entry
+## 运行与入口
 
-- Local run command:
-- Main entry file(s):
-- Routing/dispatch entry:
-- Config entry points:
+- 本地运行命令：
+- 主入口文件：
+- 路由/调度入口：
+- 配置入口：
 
-## Core Data and Dependencies
+## 核心数据与依赖
 
-- Primary database(s):
-- Cache/MQ:
-- External APIs/services:
-- Auth/identity:
+- 主数据库：
+- 缓存/MQ：
+- 外部 API/服务：
+- 认证/身份：
 
-## Key Evidence Table
+## 关键证据表
 
-| Claim | Evidence | Confidence | Impact if wrong |
+| 结论 | 证据 | 置信度 | 如果判断错误的影响 |
 |---|---|---|---|
 | | | HIGH/MEDIUM/LOW | |
 
-## Unknowns
+## 未知项
 
 - UNKNOWN_1:
 - UNKNOWN_2:
 - UNKNOWN_3:
+

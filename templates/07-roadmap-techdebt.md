@@ -1,33 +1,34 @@
-﻿# 07 Roadmap and Tech Debt (Deep)
+﻿# 07 演进路线与技术债（Deep）
 
-## 30/60/90 Plan
+## 30/60/90 天计划
 
-## Day 0-30
+## 第 0-30 天
 
-- Stabilize:
-- Measure:
-- Document:
+- 稳定：
+- 度量：
+- 文档化：
 
-## Day 31-60
+## 第 31-60 天
 
-- Refactor targets:
-- Risk reduction:
-- Test coverage plan:
+- 重构目标：
+- 风险降低：
+- 测试覆盖计划：
 
-## Day 61-90
+## 第 61-90 天
 
-- Architecture upgrades:
-- Performance goals:
-- Reliability goals:
+- 架构升级：
+- 性能目标：
+- 可靠性目标：
 
-## Debt Prioritization
+## 技术债优先级
 
-| Item | Value if solved | Effort | Risk if delayed | Priority |
+| 项目 | 解决后的价值 | 工作量 | 延迟风险 | 优先级 |
 |---|---|---|---|---|
 | | | S/M/L | HIGH/MEDIUM/LOW | P0/P1/P2 |
 
-## Decision Log
+## 决策记录
 
-| Decision | Why | Trade-off | Revisit date |
+| 决策 | 原因 | 取舍 | 复查日期 |
 |---|---|---|---|
 | | | | |
+

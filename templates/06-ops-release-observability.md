@@ -1,28 +1,29 @@
-﻿# 06 Ops, Release, Observability (Deep)
+﻿# 06 运维、发布、可观测性（Deep）
 
-## Runtime Topology
+## 运行拓扑
 
-- Services and deployment units:
-- Environments (dev/test/staging/prod):
-- Critical runtime dependencies:
+- 服务与部署单元：
+- 环境（dev/test/staging/prod）：
+- 关键运行时依赖：
 
-## Build and Release Pipeline
+## 构建与发布流水线
 
-| Stage | Tooling | Gate | Artifact |
+| 阶段 | 工具 | 门禁 | 产物 |
 |---|---|---|---|
 | | | | |
 
-## Observability Coverage
+## 可观测性覆盖
 
-| Domain | Existing Signal | Gap | Suggested Metric/Alert |
+| 领域 | 现有信号 | 缺口 | 建议指标/告警 |
 |---|---|---|---|
-| API latency | | | |
-| Error rate | | | |
-| Queue lag | | | |
-| DB saturation | | | |
+| API 延迟 | | | |
+| 错误率 | | | |
+| 队列积压 | | | |
+| DB 饱和度 | | | |
 
-## Incident Readiness
+## 事故响应准备度
 
-- Known failure modes:
-- First-response checklist:
-- Runbook references:
+- 已知故障模式：
+- 首响检查清单：
+- Runbook 引用：
+

@@ -1,38 +1,39 @@
-﻿# 00 Intake
+﻿# 00 任务边界
 
-## Mission Card
+## 任务卡
 
-| Field | Value |
+| 字段 | 值 |
 |---|---|
-| Analysis goal | |
-| Time budget | |
-| Mode (`Lite` / `Standard` / `Deep`) | |
-| Priority business path | |
-| Expected deliverables | |
+| 分析目标 | |
+| 时间预算 | |
+| 模式（`Lite` / `Standard` / `Deep`） | |
+| 优先业务路径 | |
+| 预期交付物 | |
 
-## Constraints Matrix
+## 约束矩阵
 
-| Constraint Type | Detail | Impact |
+| 约束类型 | 细节 | 影响 |
 |---|---|---|
-| Environment | | |
-| Permission/Tool | | |
-| Domain knowledge gap | | |
+| 环境 | | |
+| 权限/工具 | | |
+| 领域知识缺口 | | |
 
-## Done Criteria Board
+## 完成标准
 
-| Check | Status (`Y/N`) | Evidence |
+| 检查项 | 状态（`Y/N`） | 证据 |
 |---|---|---|
-| One-sentence system purpose | | |
-| One reproducible E2E path | | |
-| Actionable risk list | | |
-| Top-3 next actions | | |
+| 一句话系统目标 | | |
+| 一条可复现端到端链路 | | |
+| 可行动风险清单 | | |
+| 前 3 个下一步动作 | | |
 
-## Scope Snapshot
+## 范围快照
 
 ```mermaid
 flowchart TD
-Goal[Goal] --> Scope[In Scope]
-Goal --> OutScope[Out of Scope]
-Scope --> Path[Priority Path]
-Scope --> Deliverable[Deliverables]
+Goal[目标] --> Scope[范围内]
+Goal --> OutScope[范围外]
+Scope --> Path[优先路径]
+Scope --> Deliverable[交付物]
 ```
+

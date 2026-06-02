@@ -1,130 +1,131 @@
-﻿# 02 System Diagrams
+﻿# 02 系统图集
 
-## Diagram Readability Budget
+## 图表可读性预算
 
-| Rule | Target | Result |
+| 规则 | 目标 | 结果 |
 |---|---|---|
-| Obsidian width | No horizontal scrolling in a narrow note pane | |
-| Nodes per diagram | 5-9 preferred, 12 max | |
-| Edges per diagram | `edges <= nodes + 3` | |
-| Label length | Short node names; file paths stay in evidence tables | |
-| Split trigger | If dependencies exceed 5, split into upstream/core/downstream | |
+| Obsidian 宽度 | 窄栏阅读无需横向滚动 | |
+| 单图节点数 | 5-9 最佳，最多 12 | |
+| 单图边数 | `边数 <= 节点数 + 3` | |
+| 标签长度 | 节点用短名，文件路径放到证据表 | |
+| 拆图触发 | 依赖超过 5 个时拆为上游/核心/下游 | |
 
-## A. Context Diagram
+## A. 系统上下文图
 
 ```mermaid
 flowchart TD
-Caller[Caller] --> Ingress[Ingress]
-Ingress --> App[App Core]
-App --> Data[Data Boundary]
-App --> Outbound[Outbound Boundary]
+Caller[调用方] --> Ingress[入口]
+Ingress --> App[应用核心]
+App --> Data[数据边界]
+App --> Outbound[出站边界]
 ```
 
-Evidence:
+证据：
 
-| Node | Real file/symbol | Evidence | Confidence |
+| 节点 | 真实文件/符号 | 证据 | 置信度 |
 |---|---|---|---|
-| Caller | UNKNOWN | UNKNOWN | LOW |
-| Ingress | UNKNOWN | UNKNOWN | LOW |
-| App Core | UNKNOWN | UNKNOWN | LOW |
-| Data Boundary | DB/cache/MQ summary, expand below if needed | UNKNOWN | LOW |
-| Outbound Boundary | External services summary, expand below if needed | UNKNOWN | LOW |
+| 调用方 | UNKNOWN | UNKNOWN | LOW |
+| 入口 | UNKNOWN | UNKNOWN | LOW |
+| 应用核心 | UNKNOWN | UNKNOWN | LOW |
+| 数据边界 | DB/cache/MQ 汇总，必要时在下方展开 | UNKNOWN | LOW |
+| 出站边界 | 外部服务汇总，必要时在下方展开 | UNKNOWN | LOW |
 
-Why not expanded further:
+为什么没有继续展开：
 
-## B. Data and External Boundary Diagram
+## B. 数据与外部边界图
 
-Use this only when the context diagram would otherwise have more than 5 dependencies.
+当上下文图会超过 5 个依赖时使用此图。
 
 ```mermaid
 flowchart TD
-App[App Core] --> DB[(DB)]
-App --> Cache[(Cache)]
+App[应用核心] --> DB[(DB)]
+App --> Cache[(缓存)]
 App --> MQ[[MQ]]
-App --> Ext[External API]
+App --> Ext[外部 API]
 ```
 
-Evidence:
+证据：
 
-| Node | Real dependency/config | Evidence | Confidence |
+| 节点 | 真实依赖/配置 | 证据 | 置信度 |
 |---|---|---|---|
 | DB | UNKNOWN | UNKNOWN | LOW |
-| Cache | UNKNOWN | UNKNOWN | LOW |
+| 缓存 | UNKNOWN | UNKNOWN | LOW |
 | MQ | UNKNOWN | UNKNOWN | LOW |
-| External API | UNKNOWN | UNKNOWN | LOW |
+| 外部 API | UNKNOWN | UNKNOWN | LOW |
 
-## C. Container/Module Diagram
+## C. 容器/模块图
 
 ```mermaid
 flowchart TD
-Entry[Entry Module] --> Service[Application Service]
-Service --> Domain[Domain Module]
-Service --> Repo[Repository Layer]
-Repo --> Store[(Data Store)]
-Service --> Adapter[External Adapter]
+Entry[入口模块] --> Service[应用服务]
+Service --> Domain[领域模块]
+Service --> Repo[仓储层]
+Repo --> Store[(数据存储)]
+Service --> Adapter[外部适配器]
 ```
 
-Evidence:
+证据：
 
-| Node | Real file/symbol | Evidence | Confidence |
+| 节点 | 真实文件/符号 | 证据 | 置信度 |
 |---|---|---|---|
-| Entry Module | UNKNOWN | UNKNOWN | LOW |
-| Application Service | UNKNOWN | UNKNOWN | LOW |
-| Domain Module | UNKNOWN | UNKNOWN | LOW |
-| Repository Layer | UNKNOWN | UNKNOWN | LOW |
-| Data Store | UNKNOWN | UNKNOWN | LOW |
-| External Adapter | UNKNOWN | UNKNOWN | LOW |
+| 入口模块 | UNKNOWN | UNKNOWN | LOW |
+| 应用服务 | UNKNOWN | UNKNOWN | LOW |
+| 领域模块 | UNKNOWN | UNKNOWN | LOW |
+| 仓储层 | UNKNOWN | UNKNOWN | LOW |
+| 数据存储 | UNKNOWN | UNKNOWN | LOW |
+| 外部适配器 | UNKNOWN | UNKNOWN | LOW |
 
-Why not expanded further:
+为什么没有继续展开：
 
-## D. Core Sequence Diagram
+## D. 核心时序图
 
 ```mermaid
 sequenceDiagram
-participant U as Caller
-participant G as Controller
-participant S as Service
-participant R as Repository
+participant U as 调用方
+participant G as 控制器
+participant S as 服务
+participant R as 仓储
 participant D as DB
-U->>G: request
-G->>S: validate
-S->>R: read/write
-R->>D: query
-S-->>G: response
-G-->>U: result
+U->>G: 请求
+G->>S: 校验
+S->>R: 读写
+R->>D: 查询
+S-->>G: 响应
+G-->>U: 结果
 ```
 
-Evidence:
+证据：
 
-Optional outbound call, if present:
+可选出站调用（如存在）：
 
 ```mermaid
 sequenceDiagram
-participant S as Service
-participant A as Adapter
-participant X as External API
-S->>A: build request
-A->>X: call
-X-->>A: result
-A-->>S: normalized result
+participant S as 服务
+participant A as 适配器
+participant X as 外部 API
+S->>A: 构造请求
+A->>X: 调用
+X-->>A: 结果
+A-->>S: 标准化结果
 ```
 
-Evidence:
+证据：
 
-## E. Risk Hotspots Matrix
+## E. 风险热点矩阵
 
-Prefer this matrix over a dense risk graph. Add a small graph only for the top 1-2 risks when the relationship itself matters.
+优先使用矩阵，避免密集风险图。只有当关系结构本身重要时，才为前 1-2 个风险补小图。
 
-| Hotspot | Risk | Trigger | Signal | First action | Evidence |
+| 热点 | 风险 | 触发条件 | 信号 | 第一动作 | 证据 |
 |---|---|---|---|---|---|
-| UNKNOWN | Test gap | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
-| UNKNOWN | Tight coupling | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
-| UNKNOWN | Single owner | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| UNKNOWN | 测试缺口 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| UNKNOWN | 强耦合 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| UNKNOWN | 单一负责人 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 
-Optional small risk graph:
+可选小风险图：
 
 ```mermaid
 flowchart TD
-Hotspot[Top Hotspot] --> Risk[Primary Risk]
-Risk --> Action[First Action]
+Hotspot[首要热点] --> Risk[主要风险]
+Risk --> Action[第一动作]
 ```
+

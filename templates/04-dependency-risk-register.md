@@ -1,19 +1,20 @@
-﻿# 04 Dependency and Risk Register (Standard+)
+﻿# 04 依赖与风险登记（Standard+）
 
-## External Dependencies
+## 外部依赖
 
-| Dependency | Type | Usage | Failure Impact | Fallback | Monitoring Signal |
+| 依赖 | 类型 | 用途 | 故障影响 | 降级/替代方案 | 监控信号 |
 |---|---|---|---|---|---|
 | | DB/Cache/MQ/API/SDK | | HIGH/MEDIUM/LOW | | |
 
-## Internal Risk Register
+## 内部风险登记
 
-| Risk ID | Area | Trigger | Impact | Detection | Mitigation | Priority |
+| 风险 ID | 区域 | 触发条件 | 影响 | 检测方式 | 缓解方案 | 优先级 |
 |---|---|---|---|---|---|---|
 | R-001 | | | | | | P0/P1/P2 |
 
-## Technical Debt Snapshot
+## 技术债快照
 
-| Debt | Evidence | Cost | Suggested Fix | Priority |
+| 技术债 | 证据 | 成本 | 建议修复 | 优先级 |
 |---|---|---|---|---|
 | | | | | P0/P1/P2 |
+

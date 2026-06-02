@@ -1,25 +1,26 @@
-﻿# 05 Change Entry Guide (Standard+)
+﻿# 05 变更入口指南（Standard+）
 
-## Top Change Entry Points
+## 主要变更入口
 
-1. Entry point A:
-2. Entry point B:
-3. Entry point C:
+1. 入口 A：
+2. 入口 B：
+3. 入口 C：
 
-## For Each Entry Point
+## 每个入口的判断表
 
-| Entry Point | When to touch | Do not break | Minimum validation | Rollback lever |
+| 入口 | 何时修改 | 不能破坏 | 最小验证 | 回滚抓手 |
 |---|---|---|---|---|
 | | | | | |
 
-## Debugging Path
+## 调试路径
 
-- Log anchors:
-- Breakpoint anchors:
-- Feature flags / config switches:
+- 日志锚点：
+- 断点锚点：
+- Feature Flag / 配置开关：
 
-## Safe First PR Plan
+## 首个低风险 PR 计划
 
-1. Smallest non-invasive change:
-2. Verification steps:
-3. Blast radius control:
+1. 最小非侵入改动：
+2. 验证步骤：
+3. 影响面控制：
+
